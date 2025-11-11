@@ -1,0 +1,34 @@
+{
+    // https://code.visualstudio.com/docs/devcontainers/tutorial
+    // https://containers.dev/implementors/json_reference/
+    // https://code.visualstudio.com/docs/devcontainers/containers#_quick-start-open-an-existing-folder-in-a-container
+    // https://code.visualstudio.com/docs/devcontainers/containers#_open-a-folder-on-a-remote-ssh-host-in-a-container
+    "name": "RustDev",
+    "image": "rust-dev:1.91.0",
+    "privileged": true,
+    "runArgs": [
+        "--rm",
+        "--network=host"
+    ],
+    "remoteUser": "root",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/root/Rust,type=bind",
+    "workspaceFolder": "/root/Rust",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "vadimcn.vscode-lldb",
+                "tamasfe.even-better-toml",
+                "fill-labs.dependi",
+                "usernamehw.errorlens"
+            ],
+            "settings": {
+                "[rust]": {
+                    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+                    "editor.formatOnSave": true
+                }
+                // "rust-analyzer.check.command": "clippy"
+            }
+        }
+    }
+}
