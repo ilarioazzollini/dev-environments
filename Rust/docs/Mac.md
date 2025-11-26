@@ -27,7 +27,7 @@ export RUST_VERSION=1.91.0
 and then build the Docker container image
 
 ```zsh
-$ docker build \
+docker build \
     --build-arg RUST_VERSION=${RUST_VERSION} \
     -f docker/Dockerfile \
     -t rust-dev:${RUST_VERSION} \
@@ -52,7 +52,6 @@ export RUST_VERSION=1.91.0
 
 and then run a Docker container, that we choose to call `rust-dev-cont`, by
 
-
 ```zsh
 docker run \
     -it \
@@ -70,7 +69,7 @@ Now we should be inside a terminal in the Docker container we just launched. If 
 
 Now, let us go back to the terminal inside the container. If everything worked correctly we should be at the location `/root/Rust`. We can check it by
 
-```zsh
+```bash
 pwd
 ```
 
@@ -78,7 +77,7 @@ and we should see the whole content of the Rust folder by running the `ls` comma
 
 We can check that `rustc` and `cargo` are correctly installed and available inside this container (with the specific version we chose):
 
-```zsh
+```bash
 cargo --version
 rustc --version
 ```
@@ -87,37 +86,37 @@ rustc --version
 
 Inside the running container, we can now navigate to the root directory of the `hello_world` executable project
 
-```zsh
+```bash
 cd hello_world
 ```
 
 format it
 
-```zsh
+```bash
 cargo fmt
 ```
 
 check it (it is a quick build)
 
-```zsh
+```bash
 cargo check
 ```
 
 run linters
 
-```zsh
+```bash
 cargo clippy
 ```
 
 build it (in Debug mode by defalt)
 
-```zsh
+```bash
 cargo build
 ```
 
 and finally run the executable by
 
-```zsh
+```bash
 cargo run
 ```
 
@@ -125,7 +124,7 @@ cargo run
 
 When we are done working inside the container, we can simply close the terminal
 
-```zsh
+```bash
 exit
 ```
 
@@ -163,3 +162,5 @@ code .
 Then, open the Command Palette (`Cmd+Shift+P`), start typing `Dev Containers: Reopen in Container` and then click on it (or simply press `Enter`). VS Code will now close the current window, then run a `rust-dev` Docker container, install and open a new instance of VS Code inside that container, and install the desired extensions. VS Code does all this by following the instructions contained in the [devcontainer.json](../.devcontainer/devcontainer.json) file.
 
 Now let us try to open the file [main.rs](../hello_world/src/main.rs) and start writing some new Rust code. We should see that the installed packages + VS Code extensions give us intellisense, errors in line as we write, format on save, etc.
+
+Notice that if we open a terminal from this VS Code instance, it will directly open it inside the running container.
