@@ -80,10 +80,13 @@ Inside the running container, we can create a new (executable) project by:
 cargo new hello_world
 ```
 
-then navigate to its root directory, build it ad run it, by:
+then navigate to its root directory, format it, build it, run linters, and finally run the executable (`cargo run`), by:
 
 ```zsh
 cd hello_world
+cargo fmt
+cargo check
+cargo clippy
 cargo build
 cargo run
 ```

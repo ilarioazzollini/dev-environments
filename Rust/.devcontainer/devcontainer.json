@@ -26,8 +26,9 @@
                 "[rust]": {
                     "editor.defaultFormatter": "rust-lang.rust-analyzer",
                     "editor.formatOnSave": true
-                }
-                // "rust-analyzer.check.command": "clippy"
+                },
+                // Choose clippy as linter (it is a superset of rustc linters)
+                "rust-analyzer.check.command": "clippy"
             }
         }
     }
